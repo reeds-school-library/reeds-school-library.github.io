@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #mainFrame {
+            width: 100vW;
+            height: 100vH;
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        :root, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        * {
+            font-family: sans-serif;
+        }
+
+        #loader {
+            background-color: #0A0;
+            width: 100vW;
+            height: 100vH;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes hideAnim {
+            from {
+                opacity: 100%;
+            }
+            to {
+                opacity: 0%;
+            }
+        }
+
+        .hide {
+            animation: 0.5s linear 0s hideAnim;
+            opacity: 0%;
+        }
+    </style>
+</head>
+<body>
+    <div id="loader">
+        <h1>Checking Your Browser...</h1>
+    </div>
+    <iframe sandbox="allow-downloads allow-forms allow-modals allow-orientation-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-same-origin allow-scripts allow-top-navigation" id="mainFrame" style="display:none;" src="https://cartshill242.wixsite.com/reeds-school-library"></iframe>
+
+    <script>
+        document.getElementById("mainFrame").addEventListener("load", function (event) {
+            console.log("LOAD")
+            onload()
+        })
+
+        setInterval(function () {
+            console.log(document.getElementById("mainFrame").src)
+        }, 500)
+
+        function onload()  {
+            document.getElementById("mainFrame").style = "";
+            document.getElementById("loader").classList.add("hide")
+            setTimeout(function () {
+                document.getElementById("loader").style = "display: none";
+            }, 500)
+        }
+    </script>
+</body>
+</html>
